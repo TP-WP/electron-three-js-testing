@@ -1,5 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 
+//lo siguiente es para poder cargar three js
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
@@ -8,7 +11,7 @@ const createWindow = () => {
   win.loadFile("index.html");
 };
 
-app.whenReady().then(() => {
+app.on("ready", () => {
   createWindow();
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
