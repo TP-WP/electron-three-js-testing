@@ -5,8 +5,8 @@ process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 700,
   });
   win.loadFile("index.html");
 };
