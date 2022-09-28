@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require("electron");
 
-//lo siguiente es para poder cargar three js
+//this is to disable deprecated and insecure content warnings
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 const createWindow = () => {
@@ -10,8 +10,9 @@ const createWindow = () => {
   });
   win.loadFile("index.html");
 };
-
-app.on("ready", () => {
+//whenReady throws a warning (like app is undefined) but works anyway
+//changing it to app.on("ready") doesn't fix the app undefined error and still works anyways
+app.whenReady().then(() => {
   createWindow();
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
